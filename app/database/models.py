@@ -1,4 +1,6 @@
-from sqlalchemy import BigInteger, String, Enum
+from datetime import datetime
+
+from sqlalchemy import BigInteger, String, Enum, DateTime, ForeignKey
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -27,7 +29,15 @@ class User(Base):
     aim: Mapped[str] = mapped_column(String(800))
 
 
+class Training(Base):
+    __tablename__ = "trainings"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    tg_id = mapped_column(BigInteger, ForeignKey("users.id"))
+    type: Mapped[str] = mapped_column(String(20))
+    time = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+
 async def async_main():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-

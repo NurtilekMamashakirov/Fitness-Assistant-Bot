@@ -499,7 +499,7 @@
     <routine id="190" parent="1" name="fts5"/>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-01-06.18:24:08</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-01-11.10:31:23</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1593,61 +1593,93 @@
     <table id="555" parent="191" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="556" parent="191" name="users"/>
-    <column id="557" parent="555" name="type">
+    <table id="556" parent="191" name="trainings"/>
+    <table id="557" parent="191" name="users"/>
+    <column id="558" parent="555" name="type">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="558" parent="555" name="name">
+    <column id="559" parent="555" name="name">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="559" parent="555" name="tbl_name">
+    <column id="560" parent="555" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="560" parent="555" name="rootpage">
+    <column id="561" parent="555" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="561" parent="555" name="sql">
+    <column id="562" parent="555" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="562" parent="556" name="id">
+    <column id="563" parent="556" name="id">
       <DasType>INTEGER|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="563" parent="556" name="tg_id">
+    <column id="564" parent="556" name="tg_id">
       <DasType>BIGINT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="564" parent="556" name="age">
+    <column id="565" parent="556" name="type">
+      <DasType>INTEGER|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="566" parent="556" name="time">
+      <DasType>DATETIME|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="567" parent="556">
+      <ColNames>tg_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <foreign-key id="568" parent="556">
+      <ColNames>type</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>types</RefTableName>
+    </foreign-key>
+    <key id="569" parent="556">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="570" parent="557" name="id">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="571" parent="557" name="tg_id">
+      <DasType>BIGINT|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="572" parent="557" name="age">
       <DasType>INTEGER|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="565" parent="556" name="sex">
+    <column id="573" parent="557" name="sex">
       <DasType>VARCHAR|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="566" parent="556" name="weight">
+    <column id="574" parent="557" name="weight">
       <DasType>INTEGER|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="567" parent="556" name="height">
+    <column id="575" parent="557" name="height">
       <DasType>INTEGER|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="568" parent="556" name="aim">
+    <column id="576" parent="557" name="aim">
       <DasType>VARCHAR(800)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <key id="569" parent="556">
+    <key id="577" parent="557">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
