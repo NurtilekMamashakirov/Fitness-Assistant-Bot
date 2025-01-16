@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import select
 
-from app.database.models import User
+from app.database.models import User, Message
 from app.database.models import async_session, Training
 
 
@@ -65,3 +65,10 @@ async def get_trainings(tg_id: int) -> list:
     async with async_session() as session:
         trainings = await session.scalars(select(Training).where(Training.tg_id == tg_id))
     return trainings.all()
+
+
+async def set_message(tg_id: int, message: str) -> None:
+    async with async_session() as session:
+        message_to_save = Message(user_id=tg_id, text=message)
+        session.add(message_to_save)
+        await session.commit()
