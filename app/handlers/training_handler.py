@@ -10,7 +10,7 @@ from aiogram.types import Message
 from app.database.db_requests import get_user, set_training, get_trainings
 from app.middlewares.logger_middleware import LoggerMiddleware
 from app.middlewares.registartion_middleware import RegistrationMiddleware
-from app.utils import get_advice, text_with_trainings
+from app.utils import get_advice, text_with_trainings, check_conditions
 
 router = Router()
 router.message.middleware(RegistrationMiddleware())
@@ -29,11 +29,8 @@ class ConditionsState(StatesGroup):
 
 @router.message(Command('set_plan'))
 async def set_plan_command(message: Message, state: FSMContext):
-    if get_user(message.from_user.id):
-        await message.answer("Введите дату тренировки в формате день/месяц/год:")
-        await state.set_state(PlanState.date)
-    else:
-        await message.answer("Первым делом зарегестрируйтесь!")
+    await message.answer("Введите дату тренировки в формате день/месяц/год:")
+    await state.set_state(PlanState.date)
 
 
 @router.message(PlanState.date)
@@ -84,10 +81,13 @@ async def get_advice_command(message: Message, state: FSMContext):
 
 @router.message(ConditionsState.condition)
 async def get_advice_with_condition(message: Message, state: FSMContext):
-    await state.update_data(condition=message.text)
-    data = await state.get_data()
-    user = await get_user(message.from_user.id)
-    trainings = await get_trainings(message.from_user.id)
-    trainings_text = text_with_trainings(trainings)
-    advice = get_advice(user.sex, user.age, user.height, user.weight, user.aim, data["condition"], trainings_text)
-    await message.answer(advice)
+    if check_conditions(message.text):
+        await state.update_data(condition=message.text)
+        data = await state.get_data()
+        user = await get_user(message.from_user.id)
+        trainings = await get_trainings(message.from_user.id)
+        trainings_text = text_with_trainings(trainings)
+        advice = get_advice(user.sex, user.age, user.height, user.weight, user.aim, data["condition"], trainings_text)
+        await message.answer(advice)
+    else:
+        await message.answer("Вы не описали свое физическое состояние, попробуйте заново.")

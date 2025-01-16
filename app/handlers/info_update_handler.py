@@ -23,11 +23,8 @@ class UpdateState(StatesGroup):
 
 @router.message(Command("set_aim"))
 async def set_aim_command(message: Message, state: FSMContext):
-    if await get_user(message.from_user.id):
-        await state.set_state(UpdateState.aim)
-        await message.answer("Введите новую цель тренировок и не забудьте написать ваш текущий опыт.")
-    else:
-        await message.answer("Первым делом зарегестрируйтесь!")
+    await state.set_state(UpdateState.aim)
+    await message.answer("Введите новую цель тренировок и не забудьте написать ваш текущий опыт.")
 
 
 @router.message(UpdateState.aim)
@@ -44,11 +41,8 @@ async def set_aim(message: Message, state: FSMContext):
 
 @router.message(Command("set_age"))
 async def set_aim_command(message: Message, state: FSMContext):
-    if await get_user(message.from_user.id):
-        await state.set_state(UpdateState.aim)
-        await message.answer("Введите, сколько вам сейчас лет:")
-    else:
-        await message.answer("Первым делом зарегестрируйтесь!")
+    await state.set_state(UpdateState.aim)
+    await message.answer("Введите, сколько вам сейчас лет:")
 
 
 @router.message(UpdateState.age)
@@ -65,11 +59,8 @@ async def set_aim(message: Message, state: FSMContext):
 
 @router.message(Command("set_weight"))
 async def set_aim_command(message: Message, state: FSMContext):
-    if await get_user(message.from_user.id):
-        await state.set_state(UpdateState.weight)
-        await message.answer("Введите, сколько вы весите:")
-    else:
-        await message.answer("Первым делом зарегестрируйтесь!")
+    await state.set_state(UpdateState.weight)
+    await message.answer("Введите, сколько вы весите:")
 
 
 @router.message(UpdateState.weight)
@@ -86,11 +77,8 @@ async def set_aim(message: Message, state: FSMContext):
 
 @router.message(Command("set_height"))
 async def set_aim_command(message: Message, state: FSMContext):
-    if await get_user(message.from_user.id):
-        await state.set_state(UpdateState.height)
-        await message.answer("Введите, какой у вас рост:")
-    else:
-        await message.answer("Первым делом зарегестрируйтесь!")
+    await state.set_state(UpdateState.height)
+    await message.answer("Введите, какой у вас рост:")
 
 
 @router.message(UpdateState.height)

@@ -52,7 +52,7 @@ def make_request(prompt: str) -> str:
     return answer
 
 
-def get_advice(sex: str, age: int, height: int, weight : int, aim : str, condition: str, previous_trainings: str) -> str:
+def get_advice(sex: str, age: int, height: int, weight: int, aim: str, condition: str, previous_trainings: str) -> str:
     sex_decoder = {"male": "мусжкой", "female": "женский"}
     prompt = (f"Мой пол: {sex_decoder[sex]}\nМой возраст: {age}\nМой рост: {height}\nМой вес: {weight}\nМоя цель "
               f"тренировок и опыт: {aim}\nМое физическое состояние на данный момент: {condition}\n Мои предыдущие "
@@ -88,6 +88,13 @@ def check_height(height: str) -> bool:
         return 100 <= int(height) <= 300
     else:
         return False
+
+
+def check_conditions(conditions: str) -> bool:
+    prompt = (f"{conditions}\n\nЕсли данный текст содержит в себе физическое состояние человека, то напиши в ответе "
+              f"\"ДА\", в ином случае напиши в ответе \"НЕТ\", никаких других символов в ответе быть не должно!")
+    answer = make_request(prompt)
+    return "да" in answer.lower()
 
 
 def text_with_trainings(trainings: list) -> str:
