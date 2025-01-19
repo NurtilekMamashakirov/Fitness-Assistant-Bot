@@ -48,7 +48,6 @@ async def registration_age(message: Message, state: FSMContext):
         await message.answer(text="Укажите ваш пол:", reply_markup=sex_keyboard)
     else:
         await message.answer("Введенный возраст не корректен. Попробуйте заново.")
-        await state.clear()
 
 
 @router.callback_query(F.data == "man")
@@ -73,7 +72,6 @@ async def registration_height(message: Message, state: FSMContext):
         await message.answer("Укажите ваш вес:")
     else:
         await message.answer("Введенный рост не корректен. Попробуйте заново.")
-        await state.clear()
 
 
 @router.message(RegistrationState.weight)
@@ -84,7 +82,6 @@ async def registration_weight(message: Message, state: FSMContext):
         await message.answer(text="Укажите ваш опыт и цель тренировок (не более 800 символов):")
     else:
         await message.answer("Введенный вес не корректен. Попробуйте заново.")
-        await state.clear()
 
 
 @router.message(RegistrationState.aim)
@@ -95,7 +92,7 @@ async def registration_aim(message: Message, state: FSMContext):
         await set_user(tg_id=message.from_user.id, age=data["age"], sex=data["sex"], weight=data["weight"],
                        height=data["height"], aim=data["aim"])
         await message.answer("Регистариция успешно завершена!")
+        await state.clear()
     else:
         await message.answer(
-            "Ваше сообщение не содержит информацию о цели тренировок или опыте, начните регистрацию заново.")
-    await state.clear()
+            "Ваше сообщение не содержит информацию о цели тренировок или опыте. Попробуйте заново.")

@@ -33,17 +33,19 @@ class Training(Base):
     __tablename__ = "trainings"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id = mapped_column(BigInteger, ForeignKey("users.tg_id"))
+    tg_id = mapped_column(BigInteger, ForeignKey("users.tg_id"))
     type: Mapped[str] = mapped_column(String(20))
     time = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    status: Mapped[int] = mapped_column()
 
 
 class Message(Base):
     __tablename__ = "messages"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id = mapped_column(BigInteger, ForeignKey("users.tg_id"))
+    tg_id = mapped_column(BigInteger, ForeignKey("users.tg_id"))
     text: Mapped[str] = mapped_column(String(800))
+    time = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
 
 
 async def async_main():

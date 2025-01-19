@@ -34,9 +34,9 @@ async def set_aim(message: Message, state: FSMContext):
     if check_aim(data["aim"]):
         await update_aim(tg_id=message.from_user.id, aim=data["aim"])
         await message.answer("Цель успешно обновлена!")
+        await state.clear()
     else:
         await message.answer("Вы не описали цель или опыт. Попробуйте заново.")
-    await state.clear()
 
 
 @router.message(Command("set_age"))
@@ -52,9 +52,9 @@ async def set_aim(message: Message, state: FSMContext):
     if check_age(data["age"]):
         await update_age(tg_id=message.from_user.id, age=data["age"])
         await message.answer("Возраст успешно обновлен!")
+        await state.clear()
     else:
         await message.answer("Введенный возраст не корректен. Попробуйте заново.")
-    await state.clear()
 
 
 @router.message(Command("set_weight"))
@@ -70,9 +70,9 @@ async def set_aim(message: Message, state: FSMContext):
     if check_weight(data["weight"]):
         await update_weight(tg_id=message.from_user.id, weight=data["weight"])
         await message.answer("Вес успешно обновлен!")
+        await state.clear()
     else:
         await message.answer("Введенный вес не корректен. Попробуйте заново.")
-    await state.clear()
 
 
 @router.message(Command("set_height"))
@@ -88,6 +88,6 @@ async def set_aim(message: Message, state: FSMContext):
     if check_height(data["height"]):
         await update_height(tg_id=message.from_user.id, height=data["height"])
         await message.answer("Рост успешно обновлен!")
+        await state.clear()
     else:
         await message.answer("Введенный рост не корректен. Попробуйте заново.")
-    await state.clear()

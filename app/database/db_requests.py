@@ -55,20 +55,34 @@ async def update_height(tg_id: int, height: int) -> None:
 async def set_training(tg_id: int, date: str, time: str, type_: str) -> None:
     async with async_session() as session:
         date_time = f"{date} {time}"
-        date_time = datetime.strptime(date_time, "%d/%m/%Y %H:%M")
-        training = Training(tg_id=tg_id, time=date_time, type=type_)
+        date_time = datetime.strptime(date_time, "%Y-%m-%d %H:%M")
+        training = Training(tg_id=tg_id, time=date_time, type=type_, status=1)
         session.add(training)
         await session.commit()
 
 
 async def get_trainings(tg_id: int) -> list:
     async with async_session() as session:
-        trainings = await session.scalars(select(Training).where(Training.tg_id == tg_id))
+        trainings = await session.scalars(select(Training).where(Training.tg_id == tg_id).where(Training.status == 1))
     return trainings.all()
+
+
+async def get_all_trainings() -> list:
+    async with async_session() as session:
+        trainings = await session.scalars(select(Training).where(Training.status == 1))
+    return trainings.all()
+
+
+async def deactive_training(training_id: int) -> None:
+    async with async_session() as session:
+        training = await session.scalar(select(Training).where(Training.id == training_id))
+        training.status = 0
+        session.add(training)
+        await session.commit()
 
 
 async def set_message(tg_id: int, message: str) -> None:
     async with async_session() as session:
-        message_to_save = Message(user_id=tg_id, text=message)
+        message_to_save = Message(tg_id=tg_id, text=message, time=datetime.now())
         session.add(message_to_save)
         await session.commit()

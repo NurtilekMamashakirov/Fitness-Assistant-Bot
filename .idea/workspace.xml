@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd76ae0e-36a9-4cb2-ad18-cdb91ec9da66" name="Changes" comment="" />
+    <list default="true" id="dd76ae0e-36a9-4cb2-ad18-cdb91ec9da66" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a68627c7-b016-4bf1-96a4-bb264e8f24b6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a68627c7-b016-4bf1-96a4-bb264e8f24b6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/db_requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/db_requests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handlers/info_update_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/handlers/info_update_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handlers/registration_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/handlers/registration_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handlers/static_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/handlers/static_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handlers/training_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/handlers/training_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/keybords.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/keybords.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +53,7 @@
   &quot;keyToString&quot;: {
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;Python.registartion_middleware.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -54,6 +71,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/handlers" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Fitness_Assistant_Bot" />
@@ -101,9 +123,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="registartion_middleware" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Fitness_Assistant_Bot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/middlewares" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/middlewares/registartion_middleware.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.registartion_middleware" />
         <item itemvalue="Python.models" />
       </list>
     </recent_temporary>
@@ -131,6 +177,10 @@
       <workItem from="1736239464629" duration="8378000" />
       <workItem from="1736413476603" duration="17310000" />
       <workItem from="1736602719657" duration="338000" />
+      <workItem from="1737041325581" duration="11131000" />
+      <workItem from="1737211870012" duration="15901000" />
+      <workItem from="1737273698239" duration="3137000" />
+      <workItem from="1737310309863" duration="4946000" />
     </task>
     <servers />
   </component>
@@ -138,7 +188,8 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Fitness_Assistant_Bot$main.coverage" NAME="main Coverage Results" MODIFIED="1736594759937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fitness_Assistant_Bot$main.coverage" NAME="main Coverage Results" MODIFIED="1737319050809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Fitness_Assistant_Bot$models.coverage" NAME="models Coverage Results" MODIFIED="1736173270310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/database" />
+    <SUITE FILE_PATH="coverage/Fitness_Assistant_Bot$registartion_middleware.coverage" NAME="registartion_middleware Coverage Results" MODIFIED="1737044848841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/middlewares" />
   </component>
 </project>
